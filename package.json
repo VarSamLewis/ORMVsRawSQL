@@ -1,0 +1,28 @@
+{
+  "name": "ormvsrawsql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VarSamLewis/ORMVsRawSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/VarSamLewis/ORMVsRawSQL/issues"
+  },
+  "homepage": "https://github.com/VarSamLewis/ORMVsRawSQL#readme",
+  "dependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.16.0"
+  }
+}
