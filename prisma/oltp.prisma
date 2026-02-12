@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  orders    Order[]
+
+  @@map("users")
+}
+
+model Product {
+  id         Int         @id @default(autoincrement())
+  name       String?
+  price      Decimal?    @db.Decimal(10, 2)
+  stock      Int?
+  orderItems OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  userId     Int         @map("user_id")
+  totalPrice Decimal?    @map("total_price") @db.Decimal(10, 2)
+  status     String?
+  user       User        @relation(fields: [userId], references: [id])
+  items      OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int     @map("order_id")
+  productId Int     @map("product_id")
+  quantity  Int?
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
